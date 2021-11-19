@@ -30,21 +30,7 @@ In M2 format, a line preceded by S denotes an original sentence while a line pre
 
 A "noop" edit is a special kind of edit that explicitly indicates an annotator/system made no changes to the original sentence. If there is only one annotator, noop edits are optional, otherwise a noop edit should be included whenever at least 1 out of n annotators considered the original sentence to be correct. This is something to be aware of when combining individual M2 files, as missing noops can affect evaluation. 
 
-# Installation
-
-## Pip Install
-
-The easiest way to install ERRANT-fr and its dependencies is using `pip`. We also recommend installing it in a clean virtual environment (e.g. with `venv`). ERRANT-fr only supports Python >= 3.3.
-```
-python3 -m venv errant_env
-source errant_env/bin/activate
-pip3 install -U pip setuptools wheel
-pip3 install errant-fr
-python3 -m spacy download fr
-```
-This will create and activate a new python3 environment called `errant_env` in the current directory. `pip` will then update some setup tools and install ERRANT, [spaCy](https://spacy.io/), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/) and spaCy's default English/French model in this environment. You can deactivate the environment at any time by running `deactivate`, but must remember to activate it again whenever you want to use ERRANT.  
-
-#### ERRANT and spaCy
+# Installation 
 
 ERRANT is designed to work with spaCy 2.
 
