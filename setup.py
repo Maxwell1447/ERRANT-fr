@@ -9,15 +9,15 @@ with open(base_dir/"README.md") as f:
     readme = f.read()
     
 setup(
-    name = "errant",
-    version = "2.3.0",
+    name = "errant-fr",
+    version = "1.0.0",
     license = "MIT",
     description = "The ERRor ANnotation Toolkit (ERRANT). Automatically extract and classify edits in parallel sentences.",
     long_description = readme,
     long_description_content_type = "text/markdown",
-    author = "Christopher Bryant, Mariano Felice",
-    author_email = "christopher.bryant@cl.cam.ac.uk",
-    url = "https://github.com/chrisjbryant/errant",    
+    author = "Christopher Bryant, Mariano Felice, Maxime Bouthors",
+    author_email = "maxbouthors@gmail.com",
+    url = "https://github.com/Maxwell1447/ERRANT-fr",    
     keywords = ["automatic annotation", "grammatical errors", "natural language processing"],
     python_requires = ">= 3.3",
     install_requires = ["spacy>=2.2.0,<3", "python-Levenshtein>=0.12.0"],
@@ -34,6 +34,7 @@ setup(
         "Intended Audience :: Science/Research",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
+        "Natural Language :: French",
         "Operating System :: OS Independent",
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
