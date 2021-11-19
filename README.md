@@ -1,6 +1,10 @@
-# ERRANT v2.3.0
+# ERRANT-fr v1.0.0 (incomplete)
 
-This repository contains the grammatical ERRor ANnotation Toolkit (ERRANT) described in:
+This repository is an extension for french language of this repository: [https://github.com/chrisjbryant/errant](https://github.com/chrisjbryant/errant).
+
+Since this is a ruled-based algorithm, the annotation is highly **incomplete**, but might still be sufficient to evaluate french GEC models.
+
+It contains the grammatical ERRor ANnotation Toolkit (ERRANT) described in:
 
 > Christopher Bryant, Mariano Felice, and Ted Briscoe. 2017. [**Automatic annotation and evaluation of error types for grammatical error correction**](https://www.aclweb.org/anthology/P17-1074/). In Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). Vancouver, Canada.
 
@@ -10,7 +14,7 @@ If you make use of this code, please cite the above papers. More information abo
 
 # Overview
 
-The main aim of ERRANT is to automatically annotate parallel English sentences with error type information. Specifically, given an original and corrected sentence pair, ERRANT will extract the edits that transform the former to the latter and classify them according to a rule-based error type framework. This can be used to standardise parallel datasets or facilitate detailed error type evaluation. Annotated output files are in M2 format and an evaluation script is provided.
+The main aim of ERRANT is to automatically annotate parallel English/French sentences with error type information. Specifically, given an original and corrected sentence pair, ERRANT will extract the edits that transform the former to the latter and classify them according to a rule-based error type framework. This can be used to standardise parallel datasets or facilitate detailed error type evaluation. Annotated output files are in M2 format and an evaluation script is provided.
 
 ### Example:  
 **Original**: This are gramamtical sentence .  
@@ -30,43 +34,32 @@ A "noop" edit is a special kind of edit that explicitly indicates an annotator/s
 
 ## Pip Install
 
-The easiest way to install ERRANT and its dependencies is using `pip`. We also recommend installing it in a clean virtual environment (e.g. with `venv`). ERRANT only supports Python >= 3.3.
+The easiest way to install ERRANT-fr and its dependencies is using `pip`. We also recommend installing it in a clean virtual environment (e.g. with `venv`). ERRANT-fr only supports Python >= 3.3.
 ```
 python3 -m venv errant_env
 source errant_env/bin/activate
 pip3 install -U pip setuptools wheel
-pip3 install errant
-python3 -m spacy download en
+pip3 install errant-fr
+python3 -m spacy download fr
 ```
-This will create and activate a new python3 environment called `errant_env` in the current directory. `pip` will then update some setup tools and install ERRANT, [spaCy](https://spacy.io/), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/) and spaCy's default English model in this environment. You can deactivate the environment at any time by running `deactivate`, but must remember to activate it again whenever you want to use ERRANT.  
+This will create and activate a new python3 environment called `errant_env` in the current directory. `pip` will then update some setup tools and install ERRANT, [spaCy](https://spacy.io/), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/) and spaCy's default English/French model in this environment. You can deactivate the environment at any time by running `deactivate`, but must remember to activate it again whenever you want to use ERRANT.  
 
 #### ERRANT and spaCy
 
-ERRANT was originally designed to work with spaCy v1.9.0 and works best with this version. SpaCy v1.9.0 does not work with Python >= 3.7 however, and so we were forced to update ERRANT to be compatible with spaCy 2. Since spaCy 2 uses a neural system to trade speed for accuracy, this means ERRANT v2.2 is **~4x slower** than ERRANT v2.1. We have not yet extended ERRANT to work with spaCy 3, but preliminary tests suggest ERRANT will become even slower. 
+ERRANT is designed to work with spaCy 2.
 
-Consequently, we recommend ERRANT v2.1.0 if speed is a priority and you can use Python < 3.7.  
-```
-pip3 install errant==2.1.0
-```
-
-#### BEA-2019 Shared Task
-
-ERRANT v2.0.0 was designed to be fully compatible with the [BEA-2019 Shared Task](https://www.cl.cam.ac.uk/research/nl/bea2019st/). If you want to directly compare against the results in the shared task, you should make sure to install ERRANT v2.0.0 as newer versions may produce slightly different scores. You can also use [Codalab](https://competitions.codalab.org/competitions/20228) to evaluate anonymously on the shared task datasets. ERRANT v2.0.0 is not compatible with Python >= 3.7.  
-```
-pip3 install errant==2.0.0
-```
 
 ## Source Install
 
 If you prefer to install ERRANT from source, you can instead run the following commands:
 ```
-git clone https://github.com/chrisjbryant/errant.git
-cd errant
+git clone https://github.com/Maxwell1447/ERRANT-fr.git
+cd ERRANT-fr
 python3 -m venv errant_env
 source errant_env/bin/activate
 pip3 install -U pip setuptools wheel
 pip3 install -e .
-python3 -m spacy download en
+python3 -m spacy download fr
 ```
 This will clone the github ERRANT source into the current directory, build and activate a python environment inside it, and then install ERRANT and all its dependencies. If you wish to modify ERRANT code, this is the recommended way to install it.
 
@@ -81,7 +74,7 @@ Three main commands are provided with ERRANT: `errant_parallel`, `errant_m2` and
      This is the main annotation command that takes an original text file and at least one parallel corrected text file as input, and outputs an annotated M2 file. By default, it is assumed that the original and corrected text files are word tokenised with one sentence per line.  
 	 Example:
 	 ```
-	 errant_parallel -orig <orig_file> -cor <cor_file1> [<cor_file2> ...] -out <out_m2>
+	 errant_parallel -orig <orig_file> -cor <cor_file1> [<cor_file2> ...] -out <out_m2> -lang fr
 	 ```
 
 2. `errant_m2`  
@@ -107,7 +100,6 @@ All these scripts also have additional advanced command line options which can b
 
 ## API
 
-As of v2.0.0, ERRANT now also comes with an API.
 
 ### Quick Start
 
